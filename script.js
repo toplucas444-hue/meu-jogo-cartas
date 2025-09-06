@@ -120,3 +120,4 @@ function updateCemeteryDisplay() {
 document.addEventListener('DOMContentLoaded', () => {
   updateDeckCount();
 });
+
