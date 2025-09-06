@@ -4,21 +4,27 @@ body.dark {
   background-color: #0a0a0a;
   color: #f5f5f5;
   margin: 0;
-  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Home Section */
+#homeSection {
+  width: 100%;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  padding: 20px;
 }
 
 h1 {
-  margin: 10px 0 20px;
   color: #f1c40f;
   text-shadow: 0 0 10px #f39c12;
+  margin: 10px 0 20px;
 }
 
-/* Inputs & botões */
+/* Inputs & Botões */
 input[type="file"] { margin: 10px 0; }
 
 button, .btn-play {
@@ -52,22 +58,28 @@ button:hover, .btn-play:hover { transform: scale(1.05); }
 .btn-reset:hover { background: #e74c3c; }
 
 /* === Área da carta grande centralizada === */
-.card-stage {
-  width: 100%;
-  max-width: 900px;
-  height: 80vh;              /* ocupa 80% da altura da tela */
+#gameSection {
   display: flex;
-  align-items: center;       /* centraliza verticalmente */
-  justify-content: center;   /* centraliza horizontalmente */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* centraliza verticalmente */
+  flex-grow: 1;
+  width: 100%;
+}
+
+.card-stage {
+  width: 90%;
+  max-width: 900px;
+  height: 70vh; /* altura grande da carta */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* centraliza a carta horizontal e vertical */
   border-radius: 14px;
   border: 3px solid #f39c12;
   box-shadow: 0 0 18px rgba(241,196,15,0.45);
   background: #0f0f0f;
-  padding: 10px;
-  margin: 0 auto;
 }
 
-/* Carta sem texto acima */
 #currentCard {
   display: flex;
   align-items: center;
@@ -76,7 +88,7 @@ button:hover, .btn-play:hover { transform: scale(1.05); }
 
 #currentCard img {
   max-width: 95%;
-  max-height: 75vh;
+  max-height: 100%;
   border-radius: 12px;
 }
 
@@ -131,4 +143,9 @@ button:hover, .btn-play:hover { transform: scale(1.05); }
 
 .card:hover { transform: scale(1.06); box-shadow: 0 0 10px rgba(255,255,255,0.1); }
 .card img { max-width: 96px; border-radius: 6px; }
+
+/* === Esconde o título na tela de jogo === */
+#gameSection h1 {
+  display: none;
+}
 
