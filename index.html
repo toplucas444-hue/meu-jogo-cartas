@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Deck de Cartas - Adicionar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dark">
+  <h1>Adicionar Cartas</h1>
+
+  <div id="deck">
+    <input type="file" id="cardInput" accept="image/*" multiple>
+    <button id="addBtn" onclick="addCard()">Adicionar Cartas</button>
+    <p>Cartas no deck: <span id="deckCount">0</span>/120</p>
+  </div>
+
+  <div class="menu">
+    <a href="jogar.html" class="btn-play">Ir para Jogar</a>
+    <button onclick="novaPartida()" class="btn-reset">Jogar Nova Partida</button>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Botão "Jogar Nova Partida": apenas zera o estado e fica na Home
+  function novaPartida() {
+    sessionStorage.removeItem("deck");
+    sessionStorage.removeItem("cemetery");
+    sessionStorage.removeItem("currentCard");
+    alert("Nova partida iniciada! O deck e o cemitério foram zerados.");
+    // continua na página inicial
+    const span = document.getElementById('deckCount');
+    if (span) span.textContent = "0";
+  }
+  </script>
+</body>
+</html>
