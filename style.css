@@ -1,3 +1,4 @@
+/* === Tema Dark === */
 body.dark {
   font-family: 'Cinzel Decorative', cursive;
   background-color: #0a0a0a;
@@ -17,6 +18,7 @@ h1 {
   text-shadow: 0 0 10px #f39c12;
 }
 
+/* Inputs & botões */
 input[type="file"] { margin: 10px 0; }
 
 button, .btn-play {
@@ -49,30 +51,44 @@ button:hover, .btn-play:hover { transform: scale(1.05); }
 .btn-reset { background: #c0392b; color: #fff; }
 .btn-reset:hover { background: #e74c3c; }
 
+/* === Área da carta grande centralizada === */
 .card-stage {
   width: 100%;
   max-width: 900px;
-  min-height: 70vh;
+  height: 80vh;              /* ocupa 80% da altura da tela */
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 5vh;
-  margin-bottom: 5vh;
+  align-items: center;       /* centraliza verticalmente */
+  justify-content: center;   /* centraliza horizontalmente */
   border-radius: 14px;
   border: 3px solid #f39c12;
   box-shadow: 0 0 18px rgba(241,196,15,0.45);
   background: #0f0f0f;
   padding: 10px;
+  margin: 0 auto;
+}
+
+/* Carta sem texto acima */
+#currentCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #currentCard img {
   max-width: 95%;
-  max-height: 70vh;
+  max-height: 75vh;
   border-radius: 12px;
 }
 
-.buttons { margin-top: 16px; display: flex; gap: 14px; justify-content: center; }
+/* Botões abaixo da carta */
+.buttons {
+  margin-top: 16px;
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+}
 
+/* Botão pequeno circular “H” (Home) */
 .home-btn { margin-top: 14px; }
 .home-btn a {
   display: inline-flex;
@@ -89,10 +105,30 @@ button:hover, .btn-play:hover { transform: scale(1.05); }
 }
 .home-btn a:hover { background: #2ecc71; transform: scale(1.08); }
 
-#cemiterio { margin: 18px auto 0; width: 100%; max-width: 900px; display: none; }
-#cemiterioList { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+/* Cemitério */
+#cemiterio {
+  margin: 18px auto 0;
+  width: 100%;
+  max-width: 900px;
+  display: none;
+}
 
-.card { padding: 5px; background: #151515; border: 1px solid #444; border-radius: 8px; cursor: pointer; transition: transform .2s, box-shadow .2s; }
+#cemiterioList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.card {
+  padding: 5px;
+  background: #151515;
+  border: 1px solid #444;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+
 .card:hover { transform: scale(1.06); box-shadow: 0 0 10px rgba(255,255,255,0.1); }
 .card img { max-width: 96px; border-radius: 6px; }
 
