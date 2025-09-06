@@ -1,20 +1,6 @@
-// Armazena em memória temporária usando URL.createObjectURL
 let deck = [];
 let cemetery = [];
 let currentCard = null;
-
-// ---------- Funções ----------
-function updateDeckCount() {
-  const span = document.getElementById('deckCount');
-  if (span) span.textContent = deck.length + (currentCard ? 1 : 0) + cemetery.length;
-}
-
-function shuffle(arr) {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-}
 
 // Adicionar cartas (múltiplas)
 function addCard() {
@@ -37,6 +23,44 @@ function addCard() {
   alert(`${files.length} carta(s) adicionada(s)!`);
 }
 
+// Contagem de cartas
+function updateDeckCount() {
+  const span = document.getElementById('deckCount');
+  if (span) span.textContent = deck.length + (currentCard ? 1 : 0) + cemetery.length;
+}
+
+// Nova partida
+function novaPartida() {
+  deck = [];
+  cemetery = [];
+  currentCard = null;
+  updateDeckCount();
+  alert("Nova partida iniciada! Deck e cemitério zerados.");
+}
+
+// Começar jogo (mostra seção jogar)
+function startGame() {
+  if (deck.length === 0) return alert('Adicione cartas antes de jogar!');
+  document.getElementById('homeSection').style.display = 'none';
+  document.getElementById('gameSection').style.display = 'block';
+  displayCurrentCard();
+  updateCemeteryDisplay();
+}
+
+// Voltar para home
+function goHome() {
+  document.getElementById('gameSection').style.display = 'none';
+  document.getElementById('homeSection').style.display = 'block';
+}
+
+// Shuffle
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+}
+
 // Próxima carta
 function nextCard() {
   if (deck.length === 0) return alert('Deck vazio!');
@@ -48,7 +72,7 @@ function nextCard() {
   updateDeckCount();
 }
 
-// Exibe carta atual
+// Exibir carta atual
 function displayCurrentCard() {
   const container = document.getElementById('currentCard');
   if (!container) return;
@@ -69,7 +93,7 @@ function toggleCemetery() {
   if (cem) cem.style.display = cem.style.display === 'none' ? 'block' : 'none';
 }
 
-// Atualiza display do cemitério
+// Atualizar cemitério
 function updateCemeteryDisplay() {
   const list = document.getElementById('cemiterioList');
   if (!list) return;
@@ -95,6 +119,4 @@ function updateCemeteryDisplay() {
 // Inicializa contagem
 document.addEventListener('DOMContentLoaded', () => {
   updateDeckCount();
-  displayCurrentCard();
-  updateCemeteryDisplay();
 });
