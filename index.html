@@ -1,36 +1,47 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Deck de Cartas - Adicionar</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deck de Cartas</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body class="dark">
-  <h1>Adicionar Cartas</h1>
 
-  <div id="deck">
-    <input type="file" id="cardInput" accept="image/*" multiple>
-    <button id="addBtn" onclick="addCard()">Adicionar Cartas</button>
-    <p>Cartas no deck: <span id="deckCount">0</span>/120</p>
-  </div>
+<h1>Deck de Cartas</h1>
+
+<!-- === Seção Home === -->
+<div id="homeSection">
+  <input type="file" id="cardInput" accept="image/*" multiple>
+  <button onclick="addCard()">Adicionar Cartas</button>
+  <p>Cartas no deck: <span id="deckCount">0</span>/120</p>
 
   <div class="menu">
-    <a href="jogar.html" class="btn-play">Ir para Jogar</a>
     <button onclick="novaPartida()" class="btn-reset">Jogar Nova Partida</button>
+    <button onclick="startGame()" class="btn-play">Jogar</button>
+  </div>
+</div>
+
+<!-- === Seção Jogar === -->
+<div id="gameSection" style="display:none;">
+  <div id="currentCard" class="card-stage">Nenhuma carta revelada ainda.</div>
+
+  <div class="buttons">
+    <button id="nextBtn" onclick="nextCard()">Next</button>
+    <button id="cemeteryBtn" onclick="toggleCemetery()">Cemitério</button>
   </div>
 
-  <script src="script.js"></script>
-  <script>
-    // Zera deck e cemitério ao iniciar nova partida (permanece na página)
-    function novaPartida() {
-      deck = [];
-      cemetery = [];
-      currentCard = null;
-      updateDeckCount();
-      alert("Nova partida iniciada! O deck e o cemitério foram zerados.");
-    }
-  </script>
+  <div class="home-btn">
+    <a href="#" onclick="goHome()">H</a>
+  </div>
+
+  <div id="cemiterio">
+    <div id="cemiterioList"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
+
